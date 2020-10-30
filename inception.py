@@ -12,8 +12,8 @@ class Inception:
     def __init__(self):
         self.graph = tf.Graph()
         with self.graph.as_default():
-            with tf.gfile.FastGFile("inception/5h/tensorflow_inception_graph.pb", "rb") as file:
-                graph_def = tf.GraphDef()
+            with tf.compat.v1.gfile.FastGFile("inception/5h/tensorflow_inception_graph.pb", "rb") as file:
+                graph_def = tf.compat.v1.GraphDef()
                 graph_def.ParseFromString(file.read())
                 tf.import_graph_def(graph_def, name="")
             self.input = self.graph.get_tensor_by_name(self.input_image)

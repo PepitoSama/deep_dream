@@ -31,7 +31,7 @@ class DeepDream:
     
     def __init__(self, model):
         self.model = model
-        self.session = tf.InteractiveSession(graph=model.graph)
+        self.session = tf.compat.v1.InteractiveSession(graph=model.graph)
 
     def update_gradient(self, gradient, image):
         height, width = image.shape[:2]
